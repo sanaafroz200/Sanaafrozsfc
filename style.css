@@ -134,6 +134,49 @@ nav{height:82px;border-bottom:1px solid rgba(255,255,255,.07);position:fixed;top
 .photo-slot:hover{border-color:var(--gold);transform:scale(1.02)}
 .photo-slot span{font-size:10px;letter-spacing:1px;text-transform:uppercase;text-align:center;padding:10px}
 .photo-slot img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+
+/* ACHIEVEMENT NAMES - METALLIC GOLD */
+#achievements .achievement-name{
+  display:block;
+  margin-top:18px;
+  text-align:center;
+
+  font-size:27px;
+  line-height:1.25;
+  font-weight:700;
+
+  background:linear-gradient(
+    110deg,
+    #8f6b15 0%,
+    #d4af37 16%,
+    #fff4ad 30%,
+    #b8860b 45%,
+    #ffe58a 58%,
+    #d4af37 72%,
+    #fff3a3 86%,
+    #9b7618 100%
+  );
+
+  background-size:220% 100%;
+
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  -webkit-text-fill-color:transparent;
+  color:#d4af37;
+
+  animation:goldMetalShine 5s ease-in-out infinite;
+}
+
+
+
+@media(max-width:600px){
+  #achievements .achievement-name{
+    font-size:28px;
+  }
+}
+
+
 /* CTA */
 .cta{padding:80px 0;background:linear-gradient(90deg,#11100d,#161108,#0b0b0b);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .cta-wrap{display:flex;justify-content:space-between;align-items:center;gap:35px}
@@ -590,3 +633,73 @@ footer h4{
     font-size: 15px;
   }
 }
+/* =========================================================
+   TEXT REVIEWS / TESTIMONIAL SLIDER
+   ========================================================= */
+.reviews-section{overflow:hidden}
+.reviews-slider{position:relative;display:flex;align-items:center;gap:16px;max-width:1050px;margin:0 auto}
+.reviews-viewport{overflow:hidden;width:100%;border-radius:24px}
+.reviews-track{display:flex;transition:transform .65s cubic-bezier(.22,.75,.2,1);will-change:transform}
+.review-card{flex:0 0 100%;box-sizing:border-box;min-height:390px;padding:38px 55px 42px;background:linear-gradient(145deg,#151515,#0b0b0b);border:1px solid rgba(212,175,55,.35);border-radius:24px;box-shadow:0 18px 50px rgba(0,0,0,.28);display:flex;flex-direction:column;justify-content:center}
+.review-stars{color:#d4af37;letter-spacing:5px;font-size:18px;margin-bottom:20px;text-shadow:0 0 12px rgba(212,175,55,.18)}
+.review-profile{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.review-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 3px solid #D4AF37;
+}
+
+.review-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}.review-profile h3{margin:0;font-family:"Playfair Display",serif;font-size:25px;font-weight:500;color:#fff}
+.review-profile p{margin:3px 0 0;color:#c7c7c7;font-size:11px;letter-spacing:1.1px;text-transform:uppercase}
+.review-text{margin:0;color:#e5e5e5;font-family:"Cormorant Garamond",serif;font-size:20px;line-height:1.58;max-height:225px;overflow-y:auto;padding-right:10px;scrollbar-width:thin;scrollbar-color:#8f6b15 transparent}
+.review-text::-webkit-scrollbar{width:4px}
+.review-text::-webkit-scrollbar-thumb{background:#8f6b15;border-radius:20px}
+.review-arrow{width:48px;height:48px;flex:0 0 48px;border:1px solid rgba(212,175,55,.55);border-radius:50%;background:#0d0d0d;color:#d4af37;font-size:34px;line-height:1;display:grid;place-items:center;cursor:pointer;transition:.3s;z-index:2}
+.review-arrow:hover{background:#d4af37;color:#111;transform:scale(1.06)}
+.review-dots{display:flex;justify-content:center;gap:8px;margin-top:24px}
+.review-dot{width:8px;height:8px;padding:0;border:1px solid #8f6b15;border-radius:50%;background:transparent;cursor:pointer;transition:.3s}
+.review-dot.active{width:24px;border-radius:10px;background:#d4af37}
+
+@media(max-width:900px){
+  .review-card{padding:34px 38px;min-height:410px}
+  .review-text{font-size:18px;line-height:1.55;max-height:255px}
+}
+@media(max-width:600px){
+  .reviews-slider{gap:7px}
+  .review-card{min-height:440px;padding:28px 22px;border-radius:20px}
+  .review-stars{font-size:15px;letter-spacing:4px;margin-bottom:16px}
+  .review-avatar{width:46px;height:46px;flex-basis:46px;font-size:19px}
+  .review-profile h3{font-size:22px}
+  .review-profile p{font-size:9px;letter-spacing:.8px}
+  .review-text{font-size:17px;line-height:1.52;max-height:300px}
+  .review-arrow{width:38px;height:38px;flex-basis:38px;font-size:28px}
+  .review-dots{margin-top:18px;gap:6px;flex-wrap:wrap;padding:0 15px}
+  .review-dot{width:7px;height:7px}
+  .review-dot.active{width:20px}
+}
+.review-profile h3 {
+  color: #D4AF37 !important;
+  text-shadow: 1px 1px 2px #8a6d1d;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.about-image {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+}
+
