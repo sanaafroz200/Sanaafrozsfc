@@ -65,3 +65,55 @@ Same method for review images.
     window.addEventListener('pointermove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'},{passive:true});
   }
 })();
+
+/* TEXT REVIEW CAROUSEL */
+(function(){
+  const slider=document.querySelector('.reviews-slider');
+  const track=document.querySelector('.reviews-track');
+  const cards=track ? Array.from(track.querySelectorAll('.review-card')) : [];
+  const dotsWrap=document.querySelector('.review-dots');
+  const prev=document.querySelector('.review-prev');
+  const next=document.querySelector('.review-next');
+  if(!slider||!track||!cards.length) return;
+
+  let current=0;
+  let timer=null;
+
+  cards.forEach((_,i)=>{
+    const dot=document.createElement('button');
+    dot.type='button';
+    dot.className='review-dot'+(i===0?' active':'');
+    dot.setAttribute('aria-label','Show review '+(i+1));
+    dot.addEventListener('click',()=>goTo(i,true));
+    dotsWrap.appendChild(dot);
+  });
+  const dots=Array.from(dotsWrap.querySelectorAll('.review-dot'));
+
+  function goTo(index,userAction){
+    current=(index+cards.length)%cards.length;
+    track.style.transform='translateX(-'+(current*100)+'%)';
+    dots.forEach((dot,i)=>dot.classList.toggle('active',i===current));
+    if(userAction) restart();
+  }
+  function restart(){
+    clearInterval(timer);
+    timer=setInterval(()=>goTo(current+1,false),6500);
+  }
+
+  prev.addEventListener('click',()=>goTo(current-1,true));
+  next.addEventListener('click',()=>goTo(current+1,true));
+
+  let startX=0;
+  let dragging=false;
+  slider.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;dragging=true},{passive:true});
+  slider.addEventListener('touchend',e=>{
+    if(!dragging) return;
+    const dx=e.changedTouches[0].clientX-startX;
+    if(Math.abs(dx)>45) goTo(current+(dx<0?1:-1),true);
+    dragging=false;
+  },{passive:true});
+
+  slider.addEventListener('mouseenter',()=>clearInterval(timer));
+  slider.addEventListener('mouseleave',restart);
+  restart();
+})();
