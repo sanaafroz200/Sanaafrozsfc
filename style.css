@@ -703,3 +703,137 @@ footer h4{
     overflow: hidden;
 }
 
+
+
+/* =========================================================
+   FINAL MOBILE STABILITY FIX — PREVENT HORIZONTAL SHIFT
+   ========================================================= */
+
+/* The mobile page was getting a horizontal overflow from
+   oversized/animated elements. Clip it at the root and at
+   major sections so the viewport cannot slide sideways. */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip !important;
+}
+
+body {
+  position: relative;
+}
+
+.container {
+  min-width: 0;
+  max-width: 1180px;
+}
+
+.hero,
+.section,
+.marquee,
+footer {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.hero-grid,
+.about-grid,
+.for-grid,
+.cards,
+.gallery,
+.split {
+  min-width: 0;
+}
+
+.hero-grid > div,
+.about-grid > div,
+.for-grid > div,
+.split-card,
+.card,
+.photo-slot {
+  min-width: 0;
+}
+
+/* Keep animated hero artwork from creating viewport overflow */
+.hero-art {
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .hero-grid,
+  .about-grid,
+  .for-grid {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .hero {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .hero-grid {
+    width: 100%;
+    max-width: 100%;
+    gap: 0;
+  }
+
+  .hero-grid > div:first-child {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .hero h1 {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(48px, 16vw, 82px);
+    line-height: .82;
+    letter-spacing: -3px;
+    overflow-wrap: normal;
+  }
+
+  .hero h1 .first,
+  .hero h1 .last {
+    max-width: 100%;
+  }
+
+  .hero h1 .last {
+    margin-left: 3vw;
+  }
+
+  .hero-copy {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-actions .btn {
+    max-width: 100%;
+  }
+
+  .hero-art {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .marquee {
+    width: 100%;
+    max-width: 100%;
+  }
+}
